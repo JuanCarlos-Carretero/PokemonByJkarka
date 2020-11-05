@@ -16,6 +16,7 @@ import java.util.List;
 
 @Database(entities = {Elemento.class}, version = 1, exportSchema = false)
 public abstract class ElementosDatabase extends RoomDatabase {
+
     public abstract ElementosDao elementosDao();
 
     private static volatile ElementosDatabase INSTANCE;
