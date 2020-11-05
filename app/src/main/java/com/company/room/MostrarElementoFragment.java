@@ -29,7 +29,7 @@ public class MostrarElementoFragment extends Fragment {
 
         ElementosViewModel elementosViewModel = new ViewModelProvider(requireActivity()).get(ElementosViewModel.class);
 
-        elementosViewModel.elementoSeleccionado.observe(getViewLifecycleOwner(), new Observer<Elemento>() {
+        elementosViewModel.seleccionado().observe(getViewLifecycleOwner(), new Observer<Elemento>() {
             @Override
             public void onChanged(Elemento elemento) {
                 binding.nombre.setText(elemento.nombre);
@@ -40,7 +40,7 @@ public class MostrarElementoFragment extends Fragment {
                     @Override
                     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
                         if(fromUser){
-                            elementosViewModel.actualizarValoracionElemento(elemento, rating);
+                            elementosViewModel.actualizar(elemento, rating);
                         }
                     }
                 });
