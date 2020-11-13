@@ -4,23 +4,32 @@ import android.app.Application;
 
 import androidx.lifecycle.LiveData;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class ElementosRepositorio {
 
-    ElementosDatabase.ElementosDao elementosDao;
+    ElementosBaseDeDatos.ElementosDao elementosDao;
     Executor executor = Executors.newSingleThreadExecutor();
 
     ElementosRepositorio(Application application){
-        elementosDao = ElementosDatabase.getDatabase(application).elementosDao();
+        elementosDao = ElementosBaseDeDatos.obtenerInstancia(application).obtenerElementosDao();
     }
+
 
     LiveData<List<Elemento>> obtener(){
         return elementosDao.obtener();
     }
+
+    LiveData<List<Elemento>> masValorados() {
+        return elementosDao.masValorados();
+    }
+
+    LiveData<List<Elemento>> buscar(String d) {
+        return elementosDao.buscar(d);
+    }
+
 
     void insertar(Elemento elemento){
         executor.execute(new Runnable() {

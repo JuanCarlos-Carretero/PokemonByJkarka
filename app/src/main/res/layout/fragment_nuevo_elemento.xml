@@ -17,12 +17,12 @@
         android:id="@+id/descripcion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripcion"
+        android:hint="Descripción"
         android:textSize="32sp"/>
     <Button
         android:id="@+id/crear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CREAR"
+        android:text="Crear"
         android:textSize="32sp"/>
 </LinearLayout>

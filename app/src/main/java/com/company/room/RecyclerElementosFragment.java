@@ -9,6 +9,7 @@ import android.widget.RatingBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -26,7 +27,7 @@ import java.util.List;
 public class RecyclerElementosFragment extends Fragment {
 
     private FragmentRecyclerElementosBinding binding;
-    private ElementosViewModel elementosViewModel;
+    ElementosViewModel elementosViewModel;
     private NavController navController;
 
     @Override
@@ -44,15 +45,16 @@ public class RecyclerElementosFragment extends Fragment {
         binding.irANuevoElemento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_recyclerElementosFragment_to_nuevoElementoFragment);
+                navController.navigate(R.id.action_nuevoElementoFragment);
             }
         });
 
-        ElementosAdapter elementosAdapter = new ElementosAdapter();
+        ElementosAdapter elementosAdapter;
+        elementosAdapter = new ElementosAdapter();
 
-        binding.recycler.setAdapter(elementosAdapter);
+        binding.recyclerView.setAdapter(elementosAdapter);
 
-        binding.recycler.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
+        binding.recyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.UP | ItemTouchHelper.DOWN,
@@ -70,14 +72,18 @@ public class RecyclerElementosFragment extends Fragment {
                 elementosViewModel.eliminar(elemento);
 
             }
-        }).attachToRecyclerView(binding.recycler);
+        }).attachToRecyclerView(binding.recyclerView);
 
-        elementosViewModel.obtener().observe(getViewLifecycleOwner(), new Observer<List<Elemento>>() {
+        obtenerElementos().observe(getViewLifecycleOwner(), new Observer<List<Elemento>>() {
             @Override
             public void onChanged(List<Elemento> elementos) {
                 elementosAdapter.establecerLista(elementos);
             }
         });
+    }
+
+    LiveData<List<Elemento>> obtenerElementos(){
+        return elementosViewModel.obtener();
     }
 
     class ElementosAdapter extends RecyclerView.Adapter<ElementoViewHolder> {
@@ -111,7 +117,7 @@ public class RecyclerElementosFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     elementosViewModel.seleccionar(elemento);
-                    navController.navigate(R.id.action_recyclerElementosFragment_to_mostrarElementoFragment);
+                    navController.navigate(R.id.action_mostrarElementoFragment);
                 }
             });
         }
