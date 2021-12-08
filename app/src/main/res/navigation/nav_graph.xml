@@ -3,22 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/recyclerElementosFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/recyclerElementosFragment"
-        android:name="com.company.room.RecyclerElementosFragment"
-        android:label="fragment_recycler_elementos"
-        tools:layout="@layout/fragment_recycler_elementos" />
-    <fragment
-        android:id="@+id/recyclerValoracionFragment"
-        android:name="com.company.room.RecyclerValoracionFragment"
-        android:label="RecyclerValoracionFragment"
-        tools:layout="@layout/fragment_recycler_elementos" />
-    <fragment
-        android:id="@+id/recyclerBuscarFragment"
-        android:name="com.company.room.RecyclerBuscarFragment"
-        android:label="RecyclerBuscarFragment"
+        android:id="@+id/recyclerPokedexFragment"
+        android:name="com.company.pokemonByJkarka.PokedexFragment"
+        android:label="Pokedex"
         tools:layout="@layout/fragment_recycler_elementos" />
 
     <action
@@ -30,12 +20,17 @@
 
     <fragment
         android:id="@+id/nuevoElementoFragment"
-        android:name="com.company.room.NuevoElementoFragment"
-        android:label="fragment_nuevo_elementok"
+        android:name="com.company.pokemonByJkarka.NuevoElementoFragment"
+        android:label="Añadir Pokemon"
         tools:layout="@layout/fragment_nuevo_elemento" />
     <fragment
         android:id="@+id/mostrarElementoFragment"
-        android:name="com.company.room.MostrarElementoFragment"
-        android:label="fragment_mostrar_elemento"
+        android:name="com.company.pokemonByJkarka.MostrarPokemonFragment"
+        android:label="Pokedex"
         tools:layout="@layout/fragment_mostrar_elemento" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.company.pokemonByJkarka.Home"
+        android:label="Pokemon By Jkarka"
+        tools:layout="@layout/fragment_home" />
 </navigation>

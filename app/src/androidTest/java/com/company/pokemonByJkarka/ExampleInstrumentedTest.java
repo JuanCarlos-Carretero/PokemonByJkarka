@@ -1,4 +1,4 @@
-package com.company.room;
+package com.company.pokemonByJkarka;
 
 import android.content.Context;
 

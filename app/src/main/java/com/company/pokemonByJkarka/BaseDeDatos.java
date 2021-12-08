@@ -1,4 +1,4 @@
-package com.company.room;
+package com.company.pokemonByJkarka;
 
 import android.content.Context;
 
@@ -16,25 +16,24 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.List;
 
-@Database(entities = {Elemento.class}, version = 1, exportSchema = false)
-public abstract class ElementosBaseDeDatos extends RoomDatabase {
+@Database(entities = {Pokemon.class}, version = 1, exportSchema = false)
+public abstract class BaseDeDatos extends RoomDatabase {
 
     public abstract ElementosDao obtenerElementosDao();
 
-    private static volatile ElementosBaseDeDatos INSTANCIA;
+    private static volatile BaseDeDatos INSTANCIA;
 
-    static ElementosBaseDeDatos obtenerInstancia(final Context context) {
+    static BaseDeDatos obtenerInstancia(final Context context) {
         if (INSTANCIA == null) {
-            synchronized (ElementosBaseDeDatos.class) {
+            synchronized (BaseDeDatos.class) {
                 if (INSTANCIA == null) {
                     INSTANCIA = Room.databaseBuilder(context,
-                            ElementosBaseDeDatos.class, "elementos.db")
+                            BaseDeDatos.class, "PokemonDtBs.db")
                             .fallbackToDestructiveMigration()
                             .addCallback(new Callback() {
                                 @Override
                                 public void onCreate(@NonNull SupportSQLiteDatabase db) {
                                     super.onCreate(db);
-
                                 }
                             })
                             .build();
@@ -46,22 +45,22 @@ public abstract class ElementosBaseDeDatos extends RoomDatabase {
 
     @Dao
     interface ElementosDao {
-        @Query("SELECT * FROM Elemento")
-        LiveData<List<Elemento>> obtener();
+        @Query("SELECT * FROM Pokemon")
+        LiveData<List<Pokemon>> obtener();
 
         @Insert
-        void insertar(Elemento elemento);
+        void insertar(Pokemon pokemon);
 
         @Update
-        void actualizar(Elemento elemento);
+        void actualizar(Pokemon pokemon);
 
         @Delete
-        void eliminar(Elemento elemento);
+        void eliminar(Pokemon pokemon);
 
-        @Query("SELECT * FROM Elemento ORDER BY valoracion DESC")
-        LiveData<List<Elemento>> masValorados();
+        @Query("SELECT * FROM Pokemon ORDER BY nPokedex DESC")
+        LiveData<List<Pokemon>> NumeroPokedex();
 
-        @Query("SELECT * FROM Elemento WHERE nombre LIKE '%' || :d || '%'")
-        LiveData<List<Elemento>> buscar(String d);
+        @Query("SELECT * FROM Pokemon WHERE nombre LIKE '%' || :d || '%'")
+        LiveData<List<Pokemon>> buscar(String d);
     }
 }

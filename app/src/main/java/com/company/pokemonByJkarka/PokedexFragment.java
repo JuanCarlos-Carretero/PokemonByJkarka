@@ -1,10 +1,9 @@
-package com.company.room;
+package com.company.pokemonByJkarka;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,16 +17,17 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.company.room.databinding.FragmentRecyclerElementosBinding;
-import com.company.room.databinding.ViewholderElementoBinding;
+import com.bumptech.glide.Glide;
+import com.company.pokemonByJkarka.databinding.FragmentRecyclerElementosBinding;
+import com.company.pokemonByJkarka.databinding.ViewholderElementoBinding;
 
 import java.util.List;
 
 
-public class RecyclerElementosFragment extends Fragment {
+public class PokedexFragment extends Fragment {
 
     private FragmentRecyclerElementosBinding binding;
-    ElementosViewModel elementosViewModel;
+    PokemonViewModel pokemonViewModel;
     private NavController navController;
 
     @Override
@@ -39,7 +39,7 @@ public class RecyclerElementosFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        elementosViewModel = new ViewModelProvider(requireActivity()).get(ElementosViewModel.class);
+        pokemonViewModel = new ViewModelProvider(requireActivity()).get(PokemonViewModel.class);
         navController = Navigation.findNavController(view);
 
         binding.irANuevoElemento.setOnClickListener(new View.OnClickListener() {
@@ -68,27 +68,27 @@ public class RecyclerElementosFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int posicion = viewHolder.getAdapterPosition();
-                Elemento elemento = elementosAdapter.obtenerElemento(posicion);
-                elementosViewModel.eliminar(elemento);
+                Pokemon pokemon = elementosAdapter.obtenerElemento(posicion);
+                pokemonViewModel.eliminar(pokemon);
 
             }
         }).attachToRecyclerView(binding.recyclerView);
 
-        obtenerElementos().observe(getViewLifecycleOwner(), new Observer<List<Elemento>>() {
+        obtenerElementos().observe(getViewLifecycleOwner(), new Observer<List<Pokemon>>() {
             @Override
-            public void onChanged(List<Elemento> elementos) {
-                elementosAdapter.establecerLista(elementos);
+            public void onChanged(List<Pokemon> pokemons) {
+                elementosAdapter.establecerLista(pokemons);
             }
         });
     }
 
-    LiveData<List<Elemento>> obtenerElementos(){
-        return elementosViewModel.obtener();
+    LiveData<List<Pokemon>> obtenerElementos(){
+        return pokemonViewModel.obtener();
     }
 
     class ElementosAdapter extends RecyclerView.Adapter<ElementoViewHolder> {
 
-        List<Elemento> elementos;
+        List<Pokemon> pokemons;
 
         @NonNull
         @Override
@@ -99,24 +99,18 @@ public class RecyclerElementosFragment extends Fragment {
         @Override
         public void onBindViewHolder(@NonNull ElementoViewHolder holder, int position) {
 
-            Elemento elemento = elementos.get(position);
+            Pokemon pokemon = pokemons.get(position);
 
-            holder.binding.nombre.setText(elemento.nombre);
-            holder.binding.valoracion.setRating(elemento.valoracion);
-
-            holder.binding.valoracion.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-                @Override
-                public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                    if(fromUser) {
-                        elementosViewModel.actualizar(elemento, rating);
-                    }
-                }
-            });
+            holder.binding.nombre.setText(pokemon.nombre);
+            holder.binding.nPokedex.setText(pokemon.nPokedex);
+            Glide.with(PokedexFragment.this).load(pokemon.imagen).into(holder.binding.imagen);
+            Glide.with(PokedexFragment.this).load(pokemon.tipo1).into(holder.binding.tipo1);
+            Glide.with(PokedexFragment.this).load(pokemon.tipo2).into(holder.binding.tipo2);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    elementosViewModel.seleccionar(elemento);
+                    pokemonViewModel.seleccionar(pokemon);
                     navController.navigate(R.id.action_mostrarElementoFragment);
                 }
             });
@@ -124,16 +118,16 @@ public class RecyclerElementosFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return elementos != null ? elementos.size() : 0;
+            return pokemons != null ? pokemons.size() : 0;
         }
 
-        public void establecerLista(List<Elemento> elementos){
-            this.elementos = elementos;
+        public void establecerLista(List<Pokemon> pokemons){
+            this.pokemons = pokemons;
             notifyDataSetChanged();
         }
 
-        public Elemento obtenerElemento(int posicion){
-            return elementos.get(posicion);
+        public Pokemon obtenerElemento(int posicion){
+            return pokemons.get(posicion);
         }
     }
 

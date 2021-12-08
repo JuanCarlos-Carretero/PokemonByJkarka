@@ -1,4 +1,4 @@
-package com.company.room;
+package com.company.pokemonByJkarka;
 
 import android.app.Application;
 
@@ -10,51 +10,51 @@ import java.util.concurrent.Executors;
 
 public class ElementosRepositorio {
 
-    ElementosBaseDeDatos.ElementosDao elementosDao;
+    BaseDeDatos.ElementosDao elementosDao;
     Executor executor = Executors.newSingleThreadExecutor();
 
     ElementosRepositorio(Application application){
-        elementosDao = ElementosBaseDeDatos.obtenerInstancia(application).obtenerElementosDao();
+        elementosDao = BaseDeDatos.obtenerInstancia(application).obtenerElementosDao();
     }
 
 
-    LiveData<List<Elemento>> obtener(){
+    LiveData<List<Pokemon>> obtener(){
         return elementosDao.obtener();
     }
 
-    LiveData<List<Elemento>> masValorados() {
-        return elementosDao.masValorados();
+    LiveData<List<Pokemon>> masValorados() {
+        return elementosDao.NumeroPokedex();
     }
 
-    LiveData<List<Elemento>> buscar(String d) {
+    LiveData<List<Pokemon>> buscar(String d) {
         return elementosDao.buscar(d);
     }
 
 
-    void insertar(Elemento elemento){
+    void insertar(Pokemon pokemon){
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                elementosDao.insertar(elemento);
+                elementosDao.insertar(pokemon);
             }
         });
     }
 
-    void eliminar(Elemento elemento) {
+    void eliminar(Pokemon pokemon) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                elementosDao.eliminar(elemento);
+                elementosDao.eliminar(pokemon);
             }
         });
     }
 
-    public void actualizar(Elemento elemento, float valoracion) {
+    public void actualizar(Pokemon pokemon, String nPokemon) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                elemento.valoracion = valoracion;
-                elementosDao.actualizar(elemento);
+                pokemon.nPokedex = nPokemon;
+                elementosDao.actualizar(pokemon);
             }
         });
     }
