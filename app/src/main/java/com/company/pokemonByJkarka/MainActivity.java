@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 // Top-level destinations:
-                R.id.homeFragment, R.id.recyclerInventarioFragment, R.id.recyclerInventarioFragment, R.id.recyclerPokedexFragment
+                R.id.homeFragment, R.id.recyclerInventarioFragment, R.id.recyclerInventarioFragment, R.id.pokedexAlphaFragment
         )
                 .setOpenableLayout(binding.drawerLayout)
                 .build();

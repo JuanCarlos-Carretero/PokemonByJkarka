@@ -16,7 +16,7 @@
         android:title="Inventario" />
 
     <item
-        android:id="@+id/recyclerPokedexFragment"
+        android:id="@+id/pokedexAlphaFragment"
         android:icon="@drawable/icon_pokedex"
         android:title="Pokedex" />
 

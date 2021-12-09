@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/layout/fragment_mostrar_elemento.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/layout/fragment_pokedex_alpha.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/layout/fragment_recycler_elementos.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/layout/viewholder_elemento.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/menu/hamburger_menu.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21875" />
+        <entry key="..\:/Users/Juan Carlos/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.21875" />
         <entry key="..\:/Users/Juank/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Juank/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/drawable/ic_baseline_coronavirus_24.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/Juank/AndroidStudioProjects/PokemonByJkarka/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.37864583333333335" />
@@ -20,7 +27,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

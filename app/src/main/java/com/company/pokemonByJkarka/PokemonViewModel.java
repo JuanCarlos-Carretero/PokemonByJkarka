@@ -41,8 +41,8 @@ public class PokemonViewModel extends AndroidViewModel {
         return elementosRepositorio.obtener();
     }
 
-    LiveData<List<Pokemon>> masValorados(){
-        return elementosRepositorio.masValorados();
+    LiveData<List<Pokemon>> ordenados(){
+        return elementosRepositorio.ordenados();
     }
 
     LiveData<List<Pokemon>> buscar(){

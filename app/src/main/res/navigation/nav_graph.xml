@@ -33,4 +33,9 @@
         android:name="com.company.pokemonByJkarka.Home"
         android:label="Pokemon By Jkarka"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/pokedexAlphaFragment"
+        android:name="com.company.pokemonByJkarka.PokedexAlphaFragment"
+        android:label="Pokedex"
+        tools:layout="@layout/fragment_pokedex_alpha" />
 </navigation>

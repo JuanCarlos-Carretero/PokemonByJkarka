@@ -22,7 +22,7 @@ public class ElementosRepositorio {
         return elementosDao.obtener();
     }
 
-    LiveData<List<Pokemon>> masValorados() {
+    LiveData<List<Pokemon>> ordenados() {
         return elementosDao.NumeroPokedex();
     }
 

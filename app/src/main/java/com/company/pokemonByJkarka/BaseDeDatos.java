@@ -57,7 +57,7 @@ public abstract class BaseDeDatos extends RoomDatabase {
         @Delete
         void eliminar(Pokemon pokemon);
 
-        @Query("SELECT * FROM Pokemon ORDER BY nPokedex DESC")
+        @Query("SELECT * FROM Pokemon ORDER BY nPokedex")
         LiveData<List<Pokemon>> NumeroPokedex();
 
         @Query("SELECT * FROM Pokemon WHERE nombre LIKE '%' || :d || '%'")
