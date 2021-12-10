@@ -16,13 +16,18 @@
         app:destination="@id/mostrarElementoFragment" />
     <action
         android:id="@+id/action_nuevoElementoFragment"
-        app:destination="@id/nuevoElementoFragment" />
+        app:destination="@id/nuevoPokemonFragment" />
 
     <fragment
-        android:id="@+id/nuevoElementoFragment"
-        android:name="com.company.pokemonByJkarka.NuevoElementoFragment"
+        android:id="@+id/nuevoPokemonFragment"
+        android:name="com.company.pokemonByJkarka.NuevoPokemonFragment"
         android:label="Añadir Pokemon"
-        tools:layout="@layout/fragment_nuevo_elemento" />
+        tools:layout="@layout/fragment_nuevo_pokemon" />
+    <fragment
+        android:id="@+id/nuevoItemFragment2"
+        android:name="com.company.pokemonByJkarka.NuevoPokemonFragment"
+        android:label="Añadir Pokemon"
+        tools:layout="@layout/fragment_nuevo_item" />
     <fragment
         android:id="@+id/mostrarElementoFragment"
         android:name="com.company.pokemonByJkarka.MostrarPokemonFragment"
@@ -38,4 +43,9 @@
         android:name="com.company.pokemonByJkarka.PokedexAlphaFragment"
         android:label="Pokedex"
         tools:layout="@layout/fragment_pokedex_alpha" />
+    <fragment
+        android:id="@+id/inventarioFragment"
+        android:name="com.company.pokemonByJkarka.InventarioFragment"
+        android:label="fragment_inventario"
+        tools:layout="@layout/fragment_inventario" />
 </navigation>

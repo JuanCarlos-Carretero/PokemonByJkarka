@@ -4,15 +4,13 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.arch.core.util.Function;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Transformations;
 
 import java.util.List;
 
-public class PokemonViewModel extends AndroidViewModel {
-
+public class ItemViewModel {
     ElementosRepositorio elementosRepositorio;
 
     MutableLiveData<Pokemon> elementoSeleccionado = new MutableLiveData<>();
@@ -26,7 +24,7 @@ public class PokemonViewModel extends AndroidViewModel {
         }
     });
 
-    public PokemonViewModel(@NonNull Application application) {
+    public ItemViewModel(@NonNull Application application) {
         super(application);
 
         elementosRepositorio = new ElementosRepositorio(application);

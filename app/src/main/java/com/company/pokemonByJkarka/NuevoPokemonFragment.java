@@ -15,7 +15,7 @@ import androidx.navigation.Navigation;
 import com.company.pokemonByJkarka.databinding.FragmentNuevoElementoBinding;
 
 
-public class NuevoElementoFragment extends Fragment {
+public class NuevoPokemonFragment extends Fragment {
     private FragmentNuevoElementoBinding binding;
 
     @Override

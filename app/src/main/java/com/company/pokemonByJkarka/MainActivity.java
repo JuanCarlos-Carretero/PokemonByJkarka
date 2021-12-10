@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                if (destination.getId() == R.id.nuevoElementoFragment
+                if (destination.getId() == R.id.nuevoPokemonFragment
                         || destination.getId() == R.id.mostrarElementoFragment) {
                     binding.navView.setVisibility(View.GONE);
                 } else {
