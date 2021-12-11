@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PokemonViewModel extends AndroidViewModel {
 
-    ElementosRepositorio elementosRepositorio;
+    PokemonRepositorio pokemonRepositorio;
 
     MutableLiveData<Pokemon> elementoSeleccionado = new MutableLiveData<>();
 
@@ -22,22 +22,22 @@ public class PokemonViewModel extends AndroidViewModel {
     LiveData<List<Pokemon>> resultadoBusqueda = Transformations.switchMap(terminoBusqueda, new Function<String, LiveData<List<Pokemon>>>() {
         @Override
         public LiveData<List<Pokemon>> apply(String input) {
-            return elementosRepositorio.buscar(input);
+            return pokemonRepositorio.buscarPokemon(input);
         }
     });
 
     public PokemonViewModel(@NonNull Application application) {
         super(application);
 
-        elementosRepositorio = new ElementosRepositorio(application);
+        pokemonRepositorio = new PokemonRepositorio(application);
     }
 
     LiveData<List<Pokemon>> obtener(){
-        return elementosRepositorio.obtener();
+        return pokemonRepositorio.obtenerPokemon();
     }
 
     LiveData<List<Pokemon>> ordenados(){
-        return elementosRepositorio.ordenados();
+        return pokemonRepositorio.ordenadosPokemon();
     }
 
     LiveData<List<Pokemon>> buscar(){
@@ -45,15 +45,15 @@ public class PokemonViewModel extends AndroidViewModel {
     }
 
     void insertar(Pokemon pokemon){
-        elementosRepositorio.insertar(pokemon);
+        pokemonRepositorio.insertarPokemon(pokemon);
     }
 
     void eliminar(Pokemon pokemon){
-        elementosRepositorio.eliminar(pokemon);
+        pokemonRepositorio.eliminarPokemon(pokemon);
     }
 
     void actualizar(Pokemon pokemon, String nPokemon){
-        elementosRepositorio.actualizar(pokemon, nPokemon);
+        pokemonRepositorio.actualizarPokemon(pokemon, nPokemon);
     }
 
     void seleccionar(Pokemon pokemon){
@@ -67,4 +67,11 @@ public class PokemonViewModel extends AndroidViewModel {
     void establecerTerminoBusqueda(String s){
         terminoBusqueda.setValue(s);
     }
+
+    LiveData<List<Pokemon>> obtenerMiticos() {
+        return pokemonRepositorio.obtenerMiticos();
+    }
+
+    LiveData<List<Pokemon>> obtenerLegendarios() {return pokemonRepositorio.obtenerLegendarios();}
 }
+

@@ -6,18 +6,17 @@
         android:title="Inicio" />
 
     <item
-        android:id="@+id/recyclerPCFragment"
-        android:icon="@drawable/icon_pc"
-        android:title="PC" />
-
-    <item
-        android:id="@+id/recyclerInventarioFragment"
-        android:icon="@drawable/icon_descargar"
-        android:title="Inventario" />
-
-    <item
         android:id="@+id/pokedexAlphaFragment"
         android:icon="@drawable/icon_pokedex"
         android:title="Pokedex" />
+
+    <item
+        android:id="@+id/listadoLegendariosFragment"
+        android:icon="@drawable/icon_legends"
+        android:title="Legendarios" />
+    <item
+        android:id="@+id/listadoMiticosFragment"
+        android:icon="@drawable/icon_mitical"
+        android:title="Miticos" />
 
 </menu>

@@ -23,11 +23,7 @@
         android:name="com.company.pokemonByJkarka.NuevoPokemonFragment"
         android:label="Añadir Pokemon"
         tools:layout="@layout/fragment_nuevo_pokemon" />
-    <fragment
-        android:id="@+id/nuevoItemFragment2"
-        android:name="com.company.pokemonByJkarka.NuevoPokemonFragment"
-        android:label="Añadir Pokemon"
-        tools:layout="@layout/fragment_nuevo_item" />
+
     <fragment
         android:id="@+id/mostrarElementoFragment"
         android:name="com.company.pokemonByJkarka.MostrarPokemonFragment"
@@ -44,8 +40,15 @@
         android:label="Pokedex"
         tools:layout="@layout/fragment_pokedex_alpha" />
     <fragment
-        android:id="@+id/inventarioFragment"
-        android:name="com.company.pokemonByJkarka.InventarioFragment"
-        android:label="fragment_inventario"
-        tools:layout="@layout/fragment_inventario" />
+        android:id="@+id/listadoMiticosFragment"
+        android:name="com.company.pokemonByJkarka.ListadoMiticosFragment"
+        android:label="Pokemon Miticos"
+        tools:layout="@layout/fragment_listado_miticos" />
+    <fragment
+        android:id="@+id/listadoLegendariosFragment"
+        android:name="com.company.pokemonByJkarka.listadoLegendariosFragment"
+        android:label="Pokemon Legendarios"
+        tools:layout="@layout/fragment_listado_legendarios" />
+
+
 </navigation>

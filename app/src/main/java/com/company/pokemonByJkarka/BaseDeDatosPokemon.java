@@ -17,18 +17,18 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.List;
 
 @Database(entities = {Pokemon.class}, version = 1, exportSchema = false)
-public abstract class BaseDeDatos extends RoomDatabase {
+public abstract class BaseDeDatosPokemon extends RoomDatabase {
 
-    public abstract ElementosDao obtenerElementosDao();
+    public abstract ElementosDaoPokemon obtenerElementosDao();
 
-    private static volatile BaseDeDatos INSTANCIA;
+    private static volatile BaseDeDatosPokemon INSTANCIA;
 
-    static BaseDeDatos obtenerInstancia(final Context context) {
+    static BaseDeDatosPokemon obtenerInstancia(final Context context) {
         if (INSTANCIA == null) {
-            synchronized (BaseDeDatos.class) {
+            synchronized (BaseDeDatosPokemon.class) {
                 if (INSTANCIA == null) {
                     INSTANCIA = Room.databaseBuilder(context,
-                            BaseDeDatos.class, "PokemonDtBs.db")
+                            BaseDeDatosPokemon.class, "BaseDeDatosPokemon.db")
                             .fallbackToDestructiveMigration()
                             .addCallback(new Callback() {
                                 @Override
@@ -44,7 +44,7 @@ public abstract class BaseDeDatos extends RoomDatabase {
     }
 
     @Dao
-    interface ElementosDao {
+    interface ElementosDaoPokemon {
         @Query("SELECT * FROM Pokemon")
         LiveData<List<Pokemon>> obtener();
 
@@ -59,6 +59,12 @@ public abstract class BaseDeDatos extends RoomDatabase {
 
         @Query("SELECT * FROM Pokemon ORDER BY nPokedex")
         LiveData<List<Pokemon>> NumeroPokedex();
+
+        @Query("SELECT * FROM Pokemon WHERE tipoNLM = 'Legendario' ORDER BY nPokedex")
+        LiveData<List<Pokemon>> LegendarioPokedex();
+
+        @Query("SELECT * FROM Pokemon WHERE tipoNLM = 'Mitico' ORDER BY nPokedex")
+        LiveData<List<Pokemon>> MiticoPokedex();
 
         @Query("SELECT * FROM Pokemon WHERE nombre LIKE '%' || :d || '%'")
         LiveData<List<Pokemon>> buscar(String d);
